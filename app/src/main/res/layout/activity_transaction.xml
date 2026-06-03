@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:hint="Cari Nama Produk..."
+        android:background="@android:drawable/editbox_background_normal"
+        android:paddingLeft="12dp"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:layout_alignParentTop="true" />
+
+    <ScrollView
+        android:id="@+id/scrollViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/etSearch"
+        android:layout_above="@id/layoutKeranjang"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/areaProdukStatis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aqua 600ml"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 3.000"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <Button
+                        android:id="@+id/btnTambahAqua"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:textColor="@color/white"
+                        android:text="+"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="#0D6EFD"
+                        android:padding="0dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sprite 250ml"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 5.500"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <Button
+                        android:id="@+id/btnTambahSprite"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="#0D6EFD"
+                        android:padding="0dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Le Mineral"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 5.000"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <Button
+                        android:id="@+id/btnTambahCleo"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="#0D6EFD"
+                        android:padding="0dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layoutKeranjang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ringkasan Belanja"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:backgroundTint="#DC3545"
+                android:text="RESET"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:padding="0dp"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvTotalHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: Rp 0"
+            android:textColor="#0D6EFD"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="right" />
+
+        <EditText
+            android:id="@+id/etBayar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:hint="Masukkan nominal uang bayar..."
+            android:inputType="number"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textSize="16sp"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btnBayar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#198754"
+            android:text="SELESAIKAN TRANSAKSI"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>
