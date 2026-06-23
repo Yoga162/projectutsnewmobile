@@ -34,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Email dan Kata Sandi tidak boleh kosong!", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (email.equals("admin@gmail.com") && password.equals("123")) {
                     Toast.makeText(MainActivity.this, "Login Berhasil!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, TransactionActivity.class);
                     startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Email atau Password salah!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

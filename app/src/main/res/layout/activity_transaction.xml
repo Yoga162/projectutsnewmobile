@@ -1,29 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F9FA">
 
-
-    <EditText
-        android:id="@+id/etSearch"
+    <LinearLayout
+        android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="16dp"
-        android:hint="Cari Nama Produk..."
-        android:background="@android:drawable/editbox_background_normal"
-        android:paddingLeft="12dp"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:layout_alignParentTop="true" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaksi"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutKeranjang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ringkasan Belanja"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:backgroundTint="#DC3545"
+                android:text="RESET"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:padding="0dp"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvDetailBelanja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Belum ada item yang dipilih"
+            android:textColor="#555555"
+            android:textSize="13sp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/tvTotalHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: Rp 0"
+            android:textColor="#0D6EFD"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="end" />
+
+        <EditText
+            android:id="@+id/etBayar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:hint="Masukkan nominal uang bayar..."
+            android:background="@drawable/rounded"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btnBayar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#198754"
+            android:text="SELESAIKAN TRANSAKSI"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollViewProducts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/etSearch"
+        android:layout_below="@id/layoutHeader"
         android:layout_above="@id/layoutKeranjang"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:clipToPadding="false">
 
         <LinearLayout
@@ -49,11 +154,11 @@
                     android:padding="8dp"
                     android:layout_margin="4dp"
                     android:elevation="2dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Aqua 600ml"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:textSize="12sp"/>
@@ -64,15 +169,31 @@
                         android:textColor="#0D6EFD"
                         android:layout_marginTop="4dp"
                         android:textSize="12sp"/>
-                    <Button
-                        android:id="@+id/btnTambahAqua"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
-                        android:textColor="@color/white"
-                        android:text="+"
                         android:layout_marginTop="8dp"
-                        android:backgroundTint="#0D6EFD"
-                        android:padding="0dp"/>
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangAqua"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahAqua"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,11 +205,11 @@
                     android:padding="8dp"
                     android:layout_margin="4dp"
                     android:elevation="2dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sprite 250ml"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:textSize="12sp"/>
@@ -99,15 +220,31 @@
                         android:textColor="#0D6EFD"
                         android:layout_marginTop="4dp"
                         android:textSize="12sp"/>
-                    <Button
-                        android:id="@+id/btnTambahSprite"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
-                        android:text="+"
-                        android:textColor="@color/white"
                         android:layout_marginTop="8dp"
-                        android:backgroundTint="#0D6EFD"
-                        android:padding="0dp"/>
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangSprite"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahSprite"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -119,11 +256,11 @@
                     android:padding="8dp"
                     android:layout_margin="4dp"
                     android:elevation="2dp">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Le Mineral"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_marginTop="4dp"
                         android:textSize="12sp"/>
@@ -134,92 +271,355 @@
                         android:textColor="#0D6EFD"
                         android:layout_marginTop="4dp"
                         android:textSize="12sp"/>
-                    <Button
-                        android:id="@+id/btnTambahCleo"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
-                        android:text="+"
-                        android:textColor="@color/white"
                         android:layout_marginTop="8dp"
-                        android:backgroundTint="#0D6EFD"
-                        android:padding="0dp"/>
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangCleo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahCleo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Indomie Goreng"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 3.500"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangIndomie"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahIndomie"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chitato 68g"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 11.500"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangChitato"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahChitato"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Oreo Vanilla"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 8.000"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangOreo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahOreo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ultra Milk 250ml"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 7.000"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangSusuUltra"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahSusuUltra"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sari Roti Tawar"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 15.000"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangSariRoti"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahSariRoti"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    android:layout_margin="4dp"
+                    android:elevation="2dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kopi Kapal Api"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 12.500"
+                        android:textColor="#0D6EFD"
+                        android:layout_marginTop="4dp"
+                        android:textSize="12sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnKurangKopi"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#DC3545"
+                            android:text="-"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                        <View android:layout_width="4dp" android:layout_height="match_parent"/>
+                        <Button
+                            android:id="@+id/btnTambahKopi"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="#0D6EFD"
+                            android:text="+"
+                            android:textColor="@color/white"
+                            android:padding="0dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/layoutKeranjang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
-        android:elevation="12dp"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ringkasan Belanja"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"/>
-            <Button
-                android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_alignParentRight="true"
-                android:backgroundTint="#DC3545"
-                android:text="RESET"
-                android:textColor="@android:color/white"
-                android:textSize="11sp"
-                android:padding="0dp"/>
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="12dp" />
-
-        <TextView
-            android:id="@+id/tvTotalHarga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Total: Rp 0"
-            android:textColor="#0D6EFD"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="right" />
-
-        <EditText
-            android:id="@+id/etBayar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:hint="Masukkan nominal uang bayar..."
-            android:inputType="number"
-            android:padding="12dp"
-            android:background="@android:drawable/editbox_background_normal"
-            android:textSize="16sp"
-            android:textColor="#000000" />
-
-        <Button
-            android:id="@+id/btnBayar"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="#198754"
-            android:text="SELESAIKAN TRANSAKSI"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="15sp" />
-    </LinearLayout>
 
 </RelativeLayout>
